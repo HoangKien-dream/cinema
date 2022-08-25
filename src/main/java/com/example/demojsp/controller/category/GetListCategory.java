@@ -20,15 +20,14 @@ public class GetListCategory extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryDao categoryDao = new CategoryDao();
-        List<Category> categories = categoryDao.findAll();
-        request.setAttribute("categories", categories);
-        request.getRequestDispatcher("create-ticket.jsp").forward(request, response);
-        response.getWriter().append("DM");
+//        CategoryDao categoryDao = new CategoryDao();
+//        List<Category> categories = categoryDao.findAll();
+//        request.setAttribute("categories", categories);
+//        request.getRequestDispatcher("create-ticket.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+      response.getWriter().append( request.getParameter("data"));
     }
 }

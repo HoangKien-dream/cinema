@@ -3,10 +3,7 @@ package com.example.demojsp.dao;
 import com.example.demojsp.model.Ticket;
 import com.example.demojsp.util.ConnectionHelper;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class TicketDao {
     public boolean createTicket(Ticket ticket, int slotNumber) {
@@ -18,15 +15,17 @@ public class TicketDao {
             }
             StringBuilder query = new StringBuilder("INSERT INTO Ticket");
             query.append(" ");
-            query.append("(room_id, movie_id, colum, row, price, time)");
+            query.append("(room_id, movie_id, colum, row, price, time,date)");
             query.append(" ");
             query.append("VALUES");
             query.append(" ");
-            query.append("(?, ?, ?, ?, ?, ? )");
+            query.append("(?, ?, ?, ?, ?, ? ,?)");
             PreparedStatement preparedStatement = cnn.prepareStatement(query.toString());
             for (int i = 0; i < slotNumber; i++) {
-                ticket.setColumn("A");
                 switch (i){
+                    case 0:
+                        ticket.setColumn("A");
+                        break;
                     case 5:
                         ticket.setColumn("B");
                         break;
@@ -45,7 +44,8 @@ public class TicketDao {
                 preparedStatement.setString(3, ticket.getColumn());
                 preparedStatement.setInt(4, i+1);
                 preparedStatement.setDouble(5, ticket.getPrice());
-                preparedStatement.setDate(6, (Date) ticket.getTime());
+                preparedStatement.setTime(6, ticket.getTime());
+                preparedStatement.setDate(7, new Date(ticket.getDate().getTime()));
                 preparedStatement.execute();
             }
         } catch (SQLException e) {

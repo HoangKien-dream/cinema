@@ -1,5 +1,6 @@
 package com.example.demojsp.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class Ticket {
@@ -10,12 +11,21 @@ public class Ticket {
 
     private int roomId;
     private int movieId;
-    private Date time;
+    private Time time;
+   private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Ticket() {
     }
 
-    public Ticket(int id, String column, int row, double price, Date time) {
+    public Ticket(int id, String column, int row, double price, Time time) {
         this.id = id;
         this.column = column;
         this.row = row;
@@ -71,11 +81,11 @@ public class Ticket {
         this.price = price;
     }
 
-    public Date getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 }

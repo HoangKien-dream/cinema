@@ -7,7 +7,18 @@ public class Movie {
     private String name;
     private String description;
     private int status;
+    private int categoryId;
+    private String thumbnail;
     private Date createdAt;
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     private Date updatedAt;
     private Date deletedAt;
 
@@ -22,6 +33,14 @@ public class Movie {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public int getId() {

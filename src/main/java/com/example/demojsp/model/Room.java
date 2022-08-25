@@ -3,6 +3,15 @@ package com.example.demojsp.model;
 public class Room {
     private int id;
     private String name;
+    private int cinemaId;
+
+    public int getCinemaId() {
+        return cinemaId;
+    }
+
+    public void setCinemaId(int cinemaId) {
+        this.cinemaId = cinemaId;
+    }
 
     public Room() {
     }
